@@ -148,7 +148,7 @@ main {
 }
 
 
-.profile .profile-photo .photo {
+.profile .profile-photo .photos {
     margin-top: 2rem;
 }
  
@@ -163,6 +163,7 @@ main {
 
 .profile .profile-photo .photo-image img {
     border-radius: 6px;
+    width: 100%;
 }
 
 .profile .profile-photo .photo-image .circle-lock {
@@ -191,4 +192,71 @@ main {
 
 
 
+.profile .profile-album {
+    margin-top: 1rem;
+}
 
+
+
+.profile .profile-album .albums {
+    margin-top: 2rem;
+
+}
+
+.profile .profile-album .photo-image {
+
+}
+
+.profile .profile-album .photo-image img {
+    border-radius: 6px;
+    width: 100%;
+    position: absolute;
+    object-fit: cover;
+}
+
+.profile .profile-album .photo-image .circle-lock {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    background-color: #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile .profile-album .photo-image .edit-photo {
+    position: absolute;
+    bottom: -1px;
+    left: -1px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+    width: fit-content;
+    height: 100%;
+}
+
+
+
+
+.profile-followings,.profile-followers .card {
+    padding: 0.5rem 1.2rem 0.5rem 1.2rem;
+    background-color: rgba(248, 248, 248, 1);
+}
+
+.profile-followings,.profile-followers .card a {
+    background: 
+     linear-gradient(rgba(248, 248, 248, 1),rgba(248, 248, 248, 1)) padding-box, /*this is your grey background*/
+     linear-gradient(to right, #9c20aa, #fb3570) border-box;
+    color: #313149;
+    padding:1px 10px 1px 10px;
+    border: 2px solid transparent;
+    border-radius:15px;
+    display:inline-block;
+    /* margin: 75px 0; */
+    width: fit-content;
+    align-self: center;
+
+}
