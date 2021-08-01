@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2021_07_25_150018) do
   enable_extension "plpgsql"
 
   create_table "album_images", force: :cascade do |t|
+    t.belongs_to :album
     t.string "img_url"
   end
 
@@ -25,6 +26,7 @@ ActiveRecord::Schema.define(version: 2021_07_25_150018) do
     t.boolean "is_public"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.belongs_to :user
   end
 
   create_table "follower", force: :cascade do |t|
@@ -40,6 +42,7 @@ ActiveRecord::Schema.define(version: 2021_07_25_150018) do
     t.boolean "is_public"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.belongs_to :user
   end
 
   create_table "users", force: :cascade do |t|
