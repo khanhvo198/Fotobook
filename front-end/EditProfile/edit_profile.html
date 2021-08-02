@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="edit_profile.css">
+    <title>Edit Profile</title>
+</head>
+<body>
+    <header>
+        <div class="header row">
+            <div class="header__left col-md-2">
+                <a href="#">Fotobook</a>
+            </div>
+            <div class="header__middle col-md-8 p-0">
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control form-control-sm" placeholder="Search Photo/Album" name="search">
+                    </div>
+                </form>
+                <div class="info">
+                    <div class="info__avatar">
+                        <a href="#"><img src="../assets/avatar.png" class="img-fluid avatar rounded-circle" alt="avatar" /></a>
+                    </div>
+                    <div class="info__name">
+                        <a href="#">Khanh Vo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="header__right col-md-2">
+                <a href="#">Logout</a>
+            </div>
+        </div>
+    </header>
+    <main class="row">
+        <div class="sidebar col-md-2">
+            <ul class="nav flex-column mt-5 ml-5">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Feeds</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Discover</a>
+                </li>
+            </ul>
+        </div>
+        <div class="edit-photo col-md-8">
+            <div class="row">
+                <h5>Edit Profile</h5>
+                <hr>
+            </div>
+
+            <div class="basic-info row justify-content-center mb-5">
+                <form action="" class="col-md-8">
+                    <p>Basic information</p>
+
+                    <img src="../assets/photo.png" alt="" width="180px" height="180px">
+
+
+                    <div class="form-group row">
+                        <label for="inputFirstName" class="col-sm-4 col-form-label">First Name</label>
+                        <div class="col-sm-8">
+                          <input class="form-control" placeholder="First Name">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="inputLastName" class="col-sm-4 col-form-label">Last Name</label>
+                        <div class="col-sm-8">
+                          <input class="form-control" placeholder="Last Name">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="input Email" class="col-sm-4 col-form-label">Email</label>
+                        <div class="col-sm-8">
+                          <input class="form-control" placeholder="Email">
+                        </div>
+                    </div>
+
+                    <button class="btn btn-success">Save</button>
+                </form>
+            </div>
+
+            <div class="password row justify-content-center mt-5">
+                <form action="" class="col-md-8">
+                    <p>Password</p>
+                    <div class="form-group row">
+                        <label for="inputCurrentPassword" class="col-sm-4 col-form-label">Current Password</label>
+                        <div class="col-sm-8">
+                          <input class="form-control" placeholder="Password">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="inputNewPassword" class="col-sm-4 col-form-label">New Password</label>
+                        <div class="col-sm-8">
+                          <input class="form-control" placeholder="New Password">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="inputPasswordConfirmation" class="col-sm-4 col-form-label">Password Confirmation </label>
+                        <div class="col-sm-8">
+                          <input class="form-control" placeholder="Password Confirmation">
+                        </div>
+                    </div>
+
+                    <button class="btn btn-success">Save</button>
+                </form>
+            </div>
+
+
+
+        </div>
+        <div class="empty col-md-2">
+
+        </div>
+    </main>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<!-- <script src="feeds.js"></script> -->
+</html>
