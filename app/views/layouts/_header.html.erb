@@ -9,16 +9,21 @@
                     <input type="text" class="form-control form-control-sm" placeholder="Search Photo/Album" name="search">
                 </div>
             </form>
-            <div class="info">
-                <div class="info__avatar">
-                    <a href="#">
-                        <%= image_tag "avatar.png", class:"img-fluid rounded-circle", alt:"avatar" %>
-                    </a>
+            
+            <% unless current_user.nil?%>
+                <div class="info">
+                    <div class="info__avatar">
+                        <a href="#">
+                            <%= image_tag "avatar.png", class:"img-fluid rounded-circle", alt:"avatar" %>
+                        </a>
+                    </div>
+                    <div class="info__name">
+                        <%# <a href="#">Khanh Vo</a> %>
+                            <%= link_to "#{current_user.first_name} #{current_user.last_name}"%>
+                    </div>
                 </div>
-                <div class="info__name">
-                    <a href="#">Khanh Vo</a>
-                </div>
-            </div>
+            <%end%>         
+
         </div>
         <div class="header__right col-md-2">
         <% if user_signed_in? %>

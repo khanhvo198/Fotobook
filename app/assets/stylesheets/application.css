@@ -25,15 +25,19 @@
 }
 
 p {
-    margin: 0;
+    margin: 0 !important;
 }
+/* a:hover {
+    text-decoration: none;
+    color: inherit !important;
+} */
 
 
 .header__left {
     display: flex;
     justify-content: flex-end;
 }
-.header__left a{
+.header__left a, .header__left a:hover{
     color: white;
     font-weight: 700;
 }
@@ -85,6 +89,6 @@ p {
     justify-content: space-around;
 }
 
-.header__right a {
+.header__right a, .header__right a:hover {
     color: white;
 }
