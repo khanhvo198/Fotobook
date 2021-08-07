@@ -1,7 +1,7 @@
 <header>
     <div class="header row">
         <div class="header__left col-md-2">
-            <a href="#">Fotobook</a>
+            <%= link_to "Fotobook",  home_path%>
         </div>
         <div class="header__middle col-md-8 p-0">
             <form>
@@ -21,7 +21,11 @@
             </div>
         </div>
         <div class="header__right col-md-2">
-            <a href="#">Logout</a>
+        <% if user_signed_in? %>
+            <%= link_to('Logout', destroy_user_session_path, method: :delete) %>  
+        <% else %>
+            <%= link_to('Login', new_user_session_path, method: :get) %>  
+        <%end%>
         </div>
     </div>
 </header>
