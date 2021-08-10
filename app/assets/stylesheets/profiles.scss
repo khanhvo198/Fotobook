@@ -1,0 +1,209 @@
+// Place all the styles related to the Profiles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+main {
+    background-color: #F8F8F8;
+}
+
+// .sidebar .nav-link {
+//     color: #828282;
+//     font-weight: bold;
+// }
+// .sidebar .nav-link.active {
+//     color: #3C5999;
+// }
+
+.profile {
+    background-color: #fff;
+    // height: 1000px;
+    margin-top: 1.5rem;
+    padding: 50px;
+}
+
+
+.profile .information .information-avatar {
+    max-width: fit-content;
+}
+
+.profile .information .information-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+
+.profile .information .profile-edit {
+    border-radius: 18px;
+    border: 2px solid #3C5999 ;
+    box-sizing: border-box;
+    width: fit-content;
+}
+.profile .information .profile-edit a {
+    color: #3C5999;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.profile .information  .profile-name {
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.profile .information .profile-navigate ul {
+    display: flex;
+    padding: 0;
+}
+
+.profile .information .profile-navigate ul li {
+    list-style-type: none;
+    padding-right: 5px;
+}
+
+.profile .information .profile-navigate ul li:not(:last-child) {
+    border-right: 2px solid #828282;
+}
+
+.profile .information .profile-navigate ul li:not(:first-child) {
+    padding-left: 5px;
+}
+
+
+
+.profile .information .profile-navigate ul li a {
+    color: #828282;
+    font-size: 24px;
+}
+
+
+.profile .information .profile-navigate ul li a.active {
+    color: #3C5999;
+    font-weight: 700;
+}
+
+.profile .information .profile-navigate ul li a:hover {
+    text-decoration: none;
+}
+
+.profile .information .profile-navigate ul li a span {
+    font-size: 16px;
+}
+
+
+.profile .profile-photos .photos {
+    margin-top: 2rem;
+}
+ 
+.profile .profile-photos {
+    margin-top: 1rem;
+}
+
+.profile .profile-photos .photo-image {
+    position: relative;
+
+}
+
+.profile .profile-photos .photo-image img {
+    border-radius: 6px;
+    width: 100%;
+}
+
+.profile .profile-photos .photo-image .circle-lock {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    background-color: #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile .profile-photos .photo-image .edit-photo {
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+    width: fit-content;
+}
+
+
+
+
+.profile .profile-albums {
+    margin-top: 1rem;
+}
+
+
+
+.profile .profile-albums .albums {
+    margin-top: 2rem;
+
+}
+
+.profile .profile-albums .photo-image {
+
+}
+
+.profile .profile-albums .photo-image img {
+    border-radius: 6px;
+    width: 100%;
+    position: absolute;
+    object-fit: cover;
+}
+
+.profile .profile-albums .photo-image .circle-lock {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    background-color: #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile .profile-albums .photo-image .edit-photo {
+    position: absolute;
+    bottom: -1px;
+    left: -1px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+    width: fit-content;
+    height: 100%;
+}
+
+
+
+
+.profile-followings .card,.profile-followers .card {
+    padding: 0.5rem 1.2rem 0.5rem 1.2rem;
+    background-color: rgba(248, 248, 248, 1);
+}
+
+.profile-followings .card a,.profile-followers .card a {
+    background: 
+     linear-gradient(rgba(248, 248, 248, 1),rgba(248, 248, 248, 1)) padding-box, /*this is your grey background*/
+     linear-gradient(to right, #9c20aa, #fb3570) border-box;
+    color: #313149;
+    padding:1px 10px 1px 10px;
+    border: 2px solid transparent;
+    border-radius:15px;
+    display:inline-block;
+    /* margin: 75px 0; */
+    width: fit-content;
+    align-self: center;
+
+}
+
+
+.profile .add-photo-button {
+    border-radius: 29px;
+}

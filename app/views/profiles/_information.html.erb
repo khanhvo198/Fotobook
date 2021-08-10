@@ -1,0 +1,45 @@
+<div class="row information">
+    <div class="col-md-3 information-avatar">
+        <img src="../assets/photo.png" class="avatar rounded-circle img-fluid" alt="avatar">
+    </div>
+
+    <div class="col-md-9 information-main">
+        <div class="profile-edit">
+            <a class="edit-profile">Edit Profile</a>
+        </div>
+        <div class="profile-name">
+            <%= "#{@user.first_name} #{@user.last_name}" %>
+        </div>
+        <div class="profile-navigate">
+            <ul>
+                <li>
+                    <%= link_to params.merge(sk: 'photos').permit(:sk,:id), class: @mode == 'photos' ? 'active' : '' do %>
+                        <%= @photos_count%>
+                        <%= content_tag :span, "PHOTOS"%>
+                    <%end%>
+                </li>
+
+                <li>
+                    <%= link_to params.merge(sk: 'albums').permit(:sk,:id), class: @mode == 'albums' ? 'active' : '' do %>
+                        <%= @albums_count%>
+                        <%= content_tag :span, "ALBUMS"%>
+                    <%end%>
+                </li>
+
+                <li>
+                    <%= link_to params.merge(sk: 'followings').permit(:sk,:id), class: @mode == 'followings' ? 'active' : '' do %>
+                        <%= @followings_count%>
+                        <%= content_tag :span, "FOLLOWINGS"%>
+                    <%end%>
+                </li>
+
+                <li>
+                    <%= link_to params.merge(sk: 'followers').permit(:sk,:id), class: @mode == 'followers' ? 'active' : '' do %>
+                        <%= @followers_count%>
+                        <%= content_tag :span, "FOLLOWERS"%>
+                    <%end%>
+            </ul>
+        </div>
+    </div>
+
+</div>
