@@ -4,7 +4,7 @@
     <% if @mode == "photos"%>
             <div class="d-flex justify-content-end">
              <% if @user.id == current_user.id%>
-                <%= link_to 'Add photo', new_photos_path, class: "btn btn-success add-photo-button" %>
+                <%= link_to 'Add photo', new_photo_path, class: "btn btn-success add-photo-button" %>
             <%end%>
             </div>
 
@@ -19,7 +19,7 @@
                                 <i class="fas fa-lock" class="img-fluid"></i>
                             </div>
                         <% end %>
-                        <%= link_to "EDIT", edit_photos_path(:id => photo.id) ,  class: "edit-photo-text" %>
+                        <%= link_to "EDIT", edit_photo_path(photo.id) ,  class: "edit-photo-text" %>
                         
                     </div>
                     <div class="photo-title">
