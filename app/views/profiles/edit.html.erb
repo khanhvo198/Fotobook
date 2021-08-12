@@ -8,8 +8,8 @@
     <div class="basic-info row justify-content-center mb-5">
         <%= form_with url: update_info_path, method: :put, class: "col-md-8" do |form|%>
             <div class="avatar d-flex justify-content-center">
-                <%= image_tag "#{@user.avatar_url}", size: "180x180", alt: "", id: "avatar" %>
-                <%= form.file_field :avatar_url%>
+                <%= image_tag "#{@user.avatar_url}", size: "180x180", alt: "avatar", id: "avatar" %>
+                <%= form.file_field :avatar_url , onchange: "previewAvatar(this)"%>
                 <div class="change-avatar">
                     Change
                 </div>
@@ -84,10 +84,22 @@
             </div>
         <% end %>
     </div>
-
-
-
 </div>
+
+<script>
+    function previewAvatar(input) {
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('.basic-info #avatar').attr('src', e.target.result)
+                    .width(180)
+                    .height(180);
+            };     
+            reader.readAsDataURL(input.files[0]);    
+        }
+    }
+</script>
 
 
 
