@@ -45,12 +45,12 @@ class ProfilesController < ApplicationController
 
 
   def edit
-    
+    @user = current_user
   end
 
   private
   def profile_info_params
-    params.permit(:first_name, :last_name, :email)
+    params.permit(:first_name, :last_name, :email,:avatar_url)
   end
 
   def profile_password_params

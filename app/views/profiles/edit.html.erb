@@ -1,3 +1,4 @@
+
 <div class="edit-profile col-md-8">
     <div class="row">
         <h5 class="mt-4">Edit User Profile</h5>
@@ -7,7 +8,8 @@
     <div class="basic-info row justify-content-center mb-5">
         <%= form_with url: update_info_path, method: :put, class: "col-md-8" do |form|%>
             <div class="avatar d-flex justify-content-center">
-                <img src="../assets/photo.png" alt="" width="180px" height="180px">
+                <%= image_tag "#{@user.avatar_url}", size: "180x180", alt: "", id: "avatar" %>
+                <%= form.file_field :avatar_url%>
                 <div class="change-avatar">
                     Change
                 </div>
@@ -86,3 +88,8 @@
 
 
 </div>
+
+
+
+
+

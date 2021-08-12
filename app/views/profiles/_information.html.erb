@@ -1,6 +1,6 @@
 <div class="row information">
     <div class="col-md-3 information-avatar">
-        <img src="../assets/photo.png" class="avatar rounded-circle img-fluid" alt="avatar">
+        <%= image_tag("#{@user.avatar_url}", alt: "avatar", class: "avatar rounded-circle img-fluid") if @user.avatar_url %>
     </div>
 
     <div class="col-md-9 information-main">
