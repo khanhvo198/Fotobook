@@ -5,7 +5,8 @@
 
     <div class="col-md-9 information-main">
         <div class="profile-edit">
-            <a class="edit-profile">Edit Profile</a>
+            <%# <a class="edit-profile">Edit Profile</a> %>
+            <%= link_to 'Edit Profile', edit_profile_path %>
         </div>
         <div class="profile-name">
             <%= "#{@user.first_name} #{@user.last_name}" %>

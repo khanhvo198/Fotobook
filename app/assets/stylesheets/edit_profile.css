@@ -1,0 +1,25 @@
+.edit-profile {
+    background-color: #fff;
+    height: 1000px;
+}
+
+.edit-profile .basic-info p, .edit-profile .password p {
+    color: #3C5999;
+    font-weight: bold;
+}
+
+.edit-profile .basic-info .avatar {
+    position: relative;
+}
+
+
+.edit-profile .basic-info .avatar img {
+    border-radius: 5px;
+}
+.edit-profile .basic-info .change-avatar {
+    position: absolute;
+    bottom: 5px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+}
