@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'photos/index'
   devise_for :users
   get 'home', to: 'home#index'
 
@@ -10,10 +9,7 @@ Rails.application.routes.draw do
 
 
 
-
-
-
-  resource 'photos'
+  resource :photos
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'home#index'

@@ -4,136 +4,31 @@
     <% if @mode == "photos"%>
             <div class="d-flex justify-content-end">
              <% if @user.id == current_user.id%>
-                <%= link_to 'Add photo', root_path, class: "btn btn-success add-photo-button" %>
+                <%= link_to 'Add photo', new_photos_path, class: "btn btn-success add-photo-button" %>
             <%end%>
             </div>
 
         <div class="row profile-photos">
-            <div class="col-md-3 photos">
-                <div class="photo-image">
-                    <img src="../assets/photo.png" class="img-fluid" alt="photo">
-                    <div class="circle-lock">
-                        <i class="fas fa-lock" class="img-fluid"></i>
-                    </div>
-                    <div class="edit-photo">
-                        EDIT
-                    </div>
-                </div>
-                <div class="photo-title">
-                    <p class="text-center">Title goes here</p>
-                </div>
-            </div>
+            <% @photo_list.each do |photo| %>
+                <div class="col-md-3 photos">
+                    <div class="photo-image h-100">
+                        <%= image_tag "#{photo.photo_url}", alt: "photo" %>
 
-            <div class="col-md-3 photos">
-                <div class="photo-image">
-                    <img src="../assets/photo.png" class="img-fluid" alt="photo">
-                    <div class="circle-lock">
-                        <i class="fas fa-lock" class="img-fluid"></i>
+                        <% if photo.privacy == "Private"%>
+                            <div class="circle-lock">
+                                <i class="fas fa-lock" class="img-fluid"></i>
+                            </div>
+                        <% end %>
+                        <%= link_to "EDIT", edit_photos_path(:id => photo.id) ,  class: "edit-photo-text" %>
+                        
                     </div>
-                    <div class="edit-photo">
-                        EDIT
-                    </div>
-                </div>
-                <div class="photo-title">
-                    <p class="text-center">Title goes here</p>
-                </div>
-            </div>
-
-            <div class="col-md-3 photos">
-                <div class="photo-image">
-                    <img src="../assets/photo.png" class="img-fluid" alt="photo">
-                    <div class="circle-lock">
-                        <i class="fas fa-lock" class="img-fluid"></i>
-                    </div>
-                    <div class="edit-photo">
-                        EDIT
+                    <div class="photo-title">
+                        <p class="text-center">
+                            <%= photo.title%>
+                        </p>
                     </div>
                 </div>
-                <div class="photo-title">
-                    <p class="text-center">Title goes here</p>
-                </div>
-            </div>
-
-
-            <div class="col-md-3 photos">
-                <div class="photo-image">
-                    <img src="../assets/photo.png" class="img-fluid" alt="photo">
-                    <div class="circle-lock">
-                        <i class="fas fa-lock" class="img-fluid"></i>
-                    </div>
-                    <div class="edit-photo">
-                        EDIT
-                    </div>
-                </div>
-                <div class="photo-title">
-                    <p class="text-center">Title goes here</p>
-                </div>
-            </div>
-
-            <div class="col-md-3 photos">
-                <div class="photo-image">
-                    <img src="../assets/photo.png" class="img-fluid" alt="photo">
-                    <div class="circle-lock">
-                        <i class="fas fa-lock" class="img-fluid"></i>
-                    </div>
-                    <div class="edit-photo">
-                        EDIT
-                    </div>
-                </div>
-                <div class="photo-title">
-                    <p class="text-center">Title goes here</p>
-                </div>
-            </div>
-
-            <div class="col-md-3 photos">
-                <div class="photo-image">
-                    <img src="../assets/photo.png" class="img-fluid" alt="photo">
-                    <div class="circle-lock">
-                        <i class="fas fa-lock" class="img-fluid"></i>
-                    </div>
-                    <div class="edit-photo">
-                        EDIT
-                    </div>
-                </div>
-                <div class="photo-title">
-                    <p class="text-center">Title goes here</p>
-                </div>
-            </div>
-
-            <div class="col-md-3 photos">
-                <div class="photo-image">
-                    <img src="../assets/photo.png" class="img-fluid" alt="photo">
-                    <div class="circle-lock">
-                        <i class="fas fa-lock" class="img-fluid"></i>
-                    </div>
-                    <div class="edit-photo">
-                        EDIT
-                    </div>
-                </div>
-                <div class="photo-title">
-                    <p class="text-center">Title goes here</p>
-                </div>
-            </div>
-
-            <div class="col-md-3 photos">
-                <div class="photo-image">
-                    <img src="../assets/photo.png" class="img-fluid" alt="photo">
-                    <div class="circle-lock">
-                        <i class="fas fa-lock" class="img-fluid"></i>
-                    </div>
-                    <div class="edit-photo">
-                        EDIT
-                    </div>
-                </div>
-                <div class="photo-title">
-                    <p class="text-center">Title goes here</p>
-                </div>
-            </div>
-
-
-
-
-
+            <% end %>
         </div>
     <% elsif @mode == "albums"%>
         <% if @user.id == current_user.id%>

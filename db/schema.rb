@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_07_124658) do
+ActiveRecord::Schema.define(version: 2021_08_12_153737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,10 +36,12 @@ ActiveRecord::Schema.define(version: 2021_08_07_124658) do
   create_table "photos", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.string "img_url"
-    t.boolean "is_public"
+    t.string "photo_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "privacy"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_photos_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -58,4 +60,5 @@ ActiveRecord::Schema.define(version: 2021_08_07_124658) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "photos", "users"
 end

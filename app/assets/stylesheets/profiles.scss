@@ -106,6 +106,8 @@ main {
 .profile .profile-photos .photo-image img {
     border-radius: 6px;
     width: 100%;
+    object-fit: cover;
+    height: 90%;
 }
 
 .profile .profile-photos .photo-image .circle-lock {
@@ -121,7 +123,7 @@ main {
     align-items: center;
 }
 
-.profile .profile-photos .photo-image .edit-photo {
+.profile .profile-photos .photo-image .edit-photo-text {
     position: absolute;
     bottom: 1px;
     right: 1px;
@@ -129,6 +131,10 @@ main {
     background-color: rgba(0, 0, 0, 0.25);
     border-radius: 14px;
     width: fit-content;
+}
+
+.profile .profile-photos .photo-image .edit-photo-text a {
+    color: white;
 }
 
 
