@@ -33,7 +33,7 @@
     <% elsif @mode == "albums"%>
         <div class="d-flex justify-content-end">
             <% if @user.id == current_user.id%>
-            <%= link_to 'Add album', new_photo_path, class: "btn btn-success add-photo-button" %>
+            <%= link_to 'Add album', new_album_path, class: "btn btn-success add-photo-button" %>
         <%end%>
         </div>
         <div class="row profile-albums">

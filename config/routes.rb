@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :photos
+  resources :albums
   get 'home', to: 'home#index'
 
   get 'profile', to: 'profiles#index'
