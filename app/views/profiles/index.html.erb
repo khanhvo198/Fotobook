@@ -31,30 +31,119 @@
             <% end %>
         </div>
     <% elsif @mode == "albums"%>
-        <% if @user.id == current_user.id%>
-            <button>Add album</button>
+        <div class="d-flex justify-content-end">
+            <% if @user.id == current_user.id%>
+            <%= link_to 'Add album', new_photo_path, class: "btn btn-success add-photo-button" %>
         <%end%>
+        </div>
         <div class="row profile-albums">
             <div class="col-md-3 albums">
-                <div class="photo-image">
-                    <div class="test position-relative" style="height: auto;">
-                        <img src="../assets/photo.png" class="img-fluid" alt="photo">
-                        <img src="../assets/photo.png" class="img-fluid" alt="photo">
-                        <img src="../assets/photo.png" class="img-fluid" alt="photo">
-                        <img src="../assets/photo.png" class="img-fluid" alt="photo">
-                        <img src="../assets/photo.png" class="img-fluid" alt="photo">        
-                    
-                        <div class="circle-lock">
-                            <i class="fas fa-lock" class="img-fluid"></i>
-                        </div>
-                        <div class="edit-photo">
-                            EDIT
-                        </div>
-                    
+                <div class="photo-image col-md-12 pl-0">
+                    <img src="../assets/photo.png" class="img-fluid" alt="photo">
+                    <img src="../assets/photo.png" class="img-fluid" alt="photo">        
+                    <img src="../assets/photo.png" class="img-fluid" alt="photo">        
+                    <img src="../assets/photo.png" class="img-fluid" alt="photo">  
+                
+                    <div class="circle-lock">
+                        <i class="fas fa-lock" class="img-fluid"></i>
                     </div>
+                    <div class="edit-photo-text">
+                        EDIT
+                    </div>
+                    <div class="count-photo">
+                        <span>13</span>
+                        <span>PHOTOS</span>
+                    </div>
+                </div>
+                <div class="photo-title">
+                    <p class="text-center">Title goes here</p>
+                </div>
+            </div>
+            <div class="col-md-3 albums">
+                <div class="photo-image col-md-12 pl-0">
+                    <img src="../assets/photo.png" class="img-fluid" alt="photo">
+                    <img src="../assets/photo.png" class="img-fluid" alt="photo">        
+                    <img src="../assets/photo.png" class="img-fluid" alt="photo">        
+                    <img src="../assets/photo.png" class="img-fluid" alt="photo">  
+                
+                    <div class="circle-lock">
+                        <i class="fas fa-lock" class="img-fluid"></i>
+                    </div>
+                    <div class="edit-photo-text">
+                        EDIT
+                    </div>
+                    <div class="count-photo">
+                        <span>13</span>
+                        <span>PHOTOS</span>
+                    </div>
+                </div>
+                <div class="photo-title">
+                    <p class="text-center">Title goes here</p>
+                </div>
+            </div>
+            <div class="col-md-3 albums">
+                <div class="photo-image col-md-12 pl-0">
+                    <img src="../assets/photo.png" class="img-fluid" alt="photo">
+                    <img src="../assets/photo.png" class="img-fluid" alt="photo">        
+                    <img src="../assets/photo.png" class="img-fluid" alt="photo">        
+                    <img src="../assets/photo.png" class="img-fluid" alt="photo">  
+                
+                    <div class="circle-lock">
+                        <i class="fas fa-lock" class="img-fluid"></i>
+                    </div>
+                    <div class="edit-photo-text">
+                        EDIT
+                    </div>
+                    <div class="count-photo">
+                        <span>13</span>
+                        <span>PHOTOS</span>
+                    </div>
+                </div>
+                <div class="photo-title">
+                    <p class="text-center">Title goes here</p>
+                </div>
+            </div>
 
+                <div class="col-md-3 albums">
+                <div class="photo-image col-md-12 pl-0">
+                    <img src="../assets/photo.png" class="img-fluid" alt="photo">
+                    <img src="../assets/photo.png" class="img-fluid" alt="photo">        
+                    <img src="../assets/photo.png" class="img-fluid" alt="photo">        
+                    <img src="../assets/photo.png" class="img-fluid" alt="photo">  
+                
+                    <div class="circle-lock">
+                        <i class="fas fa-lock" class="img-fluid"></i>
+                    </div>
+                    <div class="edit-photo-text">
+                        EDIT
+                    </div>
+                    <div class="count-photo">
+                        <span>13</span>
+                        <span>PHOTOS</span>
+                    </div>
+                </div>
+                <div class="photo-title">
+                    <p class="text-center">Title goes here</p>
+                </div>
+            </div>
 
-
+                        <div class="col-md-3 albums">
+                <div class="photo-image col-md-12 pl-0">
+                    <img src="../assets/photo.png" class="img-fluid" alt="photo">
+                    <img src="../assets/photo.png" class="img-fluid" alt="photo">        
+                    <img src="../assets/photo.png" class="img-fluid" alt="photo">        
+                    <img src="../assets/photo.png" class="img-fluid" alt="photo">  
+                
+                    <div class="circle-lock">
+                        <i class="fas fa-lock" class="img-fluid"></i>
+                    </div>
+                    <div class="edit-photo-text">
+                        EDIT
+                    </div>
+                    <div class="count-photo">
+                        <span>13</span>
+                        <span>PHOTOS</span>
+                    </div>
                 </div>
                 <div class="photo-title">
                     <p class="text-center">Title goes here</p>
@@ -62,7 +151,7 @@
             </div>
 
 
-
+            
 
         </div>
     <% elsif @mode == "followings"%>
@@ -258,5 +347,22 @@
     <%end%>
 </div>
 
+
+<script>
+        $('.profile-albums .albums .photo-image').each(function() {
+        let $this = $(this)
+        $this.children("img").each(function(index) {
+            if (index > 5) return
+            // console.log(`rotate(${index*20}deg)`)
+            if (index == 0) {
+                $(this).css('z-index','100')
+            }
+            if (index != 0)
+                $(this).css('transform' ,`rotate(${index*3}deg)`)
+            // console.log(this)
+        })
+
+    })
+</script>
 
 
