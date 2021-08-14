@@ -6,6 +6,7 @@ class PhotosController < ApplicationController
 
 
   def create
+    puts params[:photo_url]
     @photo = Photo.new(photo_params)
     @photo.user_id = current_user.id
     if @photo.save

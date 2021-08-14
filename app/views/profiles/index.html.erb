@@ -36,124 +36,40 @@
             <%= link_to 'Add album', new_album_path, class: "btn btn-success add-photo-button" %>
         <%end%>
         </div>
-        <div class="row profile-albums">
-            <div class="col-md-3 albums">
-                <div class="photo-image col-md-12 pl-0">
-                    <img src="../assets/photo.png" class="img-fluid" alt="photo">
-                    <img src="../assets/photo.png" class="img-fluid" alt="photo">        
-                    <img src="../assets/photo.png" class="img-fluid" alt="photo">        
-                    <img src="../assets/photo.png" class="img-fluid" alt="photo">  
-                
-                    <div class="circle-lock">
-                        <i class="fas fa-lock" class="img-fluid"></i>
-                    </div>
-                    <div class="edit-photo-text">
-                        EDIT
-                    </div>
-                    <div class="count-photo">
-                        <span>13</span>
-                        <span>PHOTOS</span>
-                    </div>
-                </div>
-                <div class="photo-title">
-                    <p class="text-center">Title goes here</p>
-                </div>
-            </div>
-            <div class="col-md-3 albums">
-                <div class="photo-image col-md-12 pl-0">
-                    <img src="../assets/photo.png" class="img-fluid" alt="photo">
-                    <img src="../assets/photo.png" class="img-fluid" alt="photo">        
-                    <img src="../assets/photo.png" class="img-fluid" alt="photo">        
-                    <img src="../assets/photo.png" class="img-fluid" alt="photo">  
-                
-                    <div class="circle-lock">
-                        <i class="fas fa-lock" class="img-fluid"></i>
-                    </div>
-                    <div class="edit-photo-text">
-                        EDIT
-                    </div>
-                    <div class="count-photo">
-                        <span>13</span>
-                        <span>PHOTOS</span>
-                    </div>
-                </div>
-                <div class="photo-title">
-                    <p class="text-center">Title goes here</p>
-                </div>
-            </div>
-            <div class="col-md-3 albums">
-                <div class="photo-image col-md-12 pl-0">
-                    <img src="../assets/photo.png" class="img-fluid" alt="photo">
-                    <img src="../assets/photo.png" class="img-fluid" alt="photo">        
-                    <img src="../assets/photo.png" class="img-fluid" alt="photo">        
-                    <img src="../assets/photo.png" class="img-fluid" alt="photo">  
-                
-                    <div class="circle-lock">
-                        <i class="fas fa-lock" class="img-fluid"></i>
-                    </div>
-                    <div class="edit-photo-text">
-                        EDIT
-                    </div>
-                    <div class="count-photo">
-                        <span>13</span>
-                        <span>PHOTOS</span>
-                    </div>
-                </div>
-                <div class="photo-title">
-                    <p class="text-center">Title goes here</p>
-                </div>
-            </div>
 
-                <div class="col-md-3 albums">
-                <div class="photo-image col-md-12 pl-0">
-                    <img src="../assets/photo.png" class="img-fluid" alt="photo">
-                    <img src="../assets/photo.png" class="img-fluid" alt="photo">        
-                    <img src="../assets/photo.png" class="img-fluid" alt="photo">        
-                    <img src="../assets/photo.png" class="img-fluid" alt="photo">  
-                
-                    <div class="circle-lock">
-                        <i class="fas fa-lock" class="img-fluid"></i>
-                    </div>
-                    <div class="edit-photo-text">
-                        EDIT
-                    </div>
-                    <div class="count-photo">
-                        <span>13</span>
-                        <span>PHOTOS</span>
-                    </div>
-                </div>
-                <div class="photo-title">
-                    <p class="text-center">Title goes here</p>
-                </div>
-            </div>
+            <div class="row profile-albums">
+                <% @album_list.each do |album| %>
 
-                        <div class="col-md-3 albums">
-                <div class="photo-image col-md-12 pl-0">
-                    <img src="../assets/photo.png" class="img-fluid" alt="photo">
-                    <img src="../assets/photo.png" class="img-fluid" alt="photo">        
-                    <img src="../assets/photo.png" class="img-fluid" alt="photo">        
-                    <img src="../assets/photo.png" class="img-fluid" alt="photo">  
-                
-                    <div class="circle-lock">
-                        <i class="fas fa-lock" class="img-fluid"></i>
+                    <div class="col-md-3 albums">
+                        <div class="photo-image col-md-12 pl-0">
+
+                            <% album.photos_url.each do |photo| %>
+                                <%= image_tag "#{photo}", alt: "photo", class: "img-fluid" %>
+                            <% end %>
+
+
+                            <% if album.privacy == "Private"%>
+                                <div class="circle-lock">
+                                    <i class="fas fa-lock" class="img-fluid"></i>
+                                </div>
+                            <% end %>
+
+                            <div class="edit-photo-text">
+                                EDIT
+                            </div>
+                            <div class="count-photo">
+                                <span><%= album.photos_url.size %></span>
+                                <span>PHOTOS</span>
+                            </div>
+                        </div>
+                        <div class="photo-title">
+                            <p class="text-center"><%= album.title %></p>
+                        </div>
                     </div>
-                    <div class="edit-photo-text">
-                        EDIT
-                    </div>
-                    <div class="count-photo">
-                        <span>13</span>
-                        <span>PHOTOS</span>
-                    </div>
-                </div>
-                <div class="photo-title">
-                    <p class="text-center">Title goes here</p>
-                </div>
+                <% end %>
             </div>
 
 
-            
-
-        </div>
     <% elsif @mode == "followings"%>
         <div class="row profile-followings mt-5">
             <div class="col-md-3 followings mt-5">

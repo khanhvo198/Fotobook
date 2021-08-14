@@ -1,3 +1,6 @@
 class Album < ApplicationRecord
-    has_many :images
+
+    mount_uploaders :photos_url, AlbumUploader
+
+
 end

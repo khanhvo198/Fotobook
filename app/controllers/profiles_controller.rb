@@ -16,12 +16,13 @@ class ProfilesController < ApplicationController
       @mode = "photos"
     end
     @user = User.find(params[:id])
-    @photos_count = @user.photos.count
-    @albums_count = 109
+    @photos_count = @user.photos.size
+    @albums_count = @user.albums.size
     @followings_count = 109
     @followers_count = 120
 
     @photo_list = @user.photos
+    @album_list =@user.albums
 
   end
 

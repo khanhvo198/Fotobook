@@ -4,71 +4,53 @@
         <hr class="w-100">
     </div>
     <div class="form-new-album">
-        <%= form_with url: albums_path, method: :post do |form|%>
+        <form>
             <div class="form-row">
                 <div class="form-group col-md-6 d-flex flex-column justify-content-between">
                     <div>
                         <label for="">Title</label>
-                        <%= form.text_field :title, class: 'form-control'%>
+                        <input type="text" class="form-control" name="title" id="title">
                     </div>
                     <div class="w-50">
                         <label for="">Sharing mode</label>
-                        <%= form.select :privacy, ["Public", "Private"],{} , class: "form-control"%>
+                        <select name="privacy" id="privacy" class="form-control ">
+                            <option value='Public' selected="selected">Public</option>
+                            <option value='Private'>Private</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="">Description</label>
-                    <%= form.text_area :description, size: "30x10", class: 'form-control'%>
-                </div>
+                    <textarea name="description" id="description" cols="30" rows="10" class="form-control"></textarea>
 
+                </div>
+            </div>
+            <Div class="preview-photo-upload form-row">
                 <div class="col-md-2 mt-3">
                     <div class="photo-upload-border d-flex justify-content-center align-items-center">
                         <i class="fas fa-plus"></i>
-                        <%= form.file_field :photo_url, class: "photo-upload", multiple: true, onchange: "previewPhoto(this)"%>
+                        <input type="file" multiple name="photo_url" class="photo-upload" id="photo_url">
                     </div>
                 </div>
+
+                
             </div>
+
             <div>
-                <button class="btn btn-success mt-5">Save</button>
+                <button class="btn btn-success mt-5" id="submit-album">Save</button>
             </div>
-        <% end %>
+
+        </form>
     </div>
 </div>
+
+
+
+
+
+
 <script>
-    function previewPhoto(input) {
-        if (input.files && input.files.length) {
-            for(const file of input.files) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    const divForImage = `
-                        <div class="col-md-2 mt-3" id="photo_${new Date().getTime()}">
-                            <div class="position-relative">
-                                <a class='position-absolute' style="top: 0; right: 0; color: white; z-index:100; cursor: pointer" onclick="deletePhoto(${new Date().getTime()})"><i class="fas fa-window-close"></i></a>
-                                <img width='180' height='180' src='${e.target.result}' class='position-absolute' >
-                            </div>
-                        </div>
-                    `
-
-                    $('.new-album .form-new-album .form-row').append(divForImage)
-                };
-
-                reader.readAsDataURL(file);
-            }
-        }
-    }
-
-    function deletePhoto(result) {
-        $(`.new-album .form-new-album .form-row #photo_${result}`).remove()
-    }
-
-    $('#photo_url').on('change', function() {
-        // let files = $('#photo_url').prop('files')
-        // var names = $.map(files, function(val) { return val.name; });
-        // console.log(names)
-        let data = document.getElementById('photo_url').value
-        console.log(data)
 
 
-    })
 
 </script>
