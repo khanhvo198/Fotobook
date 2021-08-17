@@ -4,10 +4,18 @@
     </div>
 
     <div class="col-md-9 information-main">
-        <div class="profile-edit">
-            <%# <a class="edit-profile">Edit Profile</a> %>
-            <%= link_to 'Edit Profile', edit_profile_path %>
-        </div>
+        <% if current_user.id == @user.id%>
+            <div class="profile-edit">
+                <%# <a class="edit-profile">Edit Profile</a> %>
+                <%= link_to 'Edit Profile', edit_profile_path %>
+            </div>
+        <% else %>
+            <% if current_user.followers.pluck(:follower_id).include? @user.id  %>
+                <%= link_to 'UnFollow', follow_path(id: @user.id), method: :delete  %>
+            <% else %>
+                <%= link_to 'Follow', follows_path(follower_id: @user.id), method: :post  %>
+            <% end %>
+        <%end%>
         <div class="profile-name">
             <%= "#{@user.first_name} #{@user.last_name}" %>
         </div>

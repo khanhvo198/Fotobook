@@ -18,11 +18,16 @@ class ProfilesController < ApplicationController
     @user = User.find(params[:id])
     @photos_count = @user.photos.size
     @albums_count = @user.albums.size
-    @followings_count = 109
-    @followers_count = 120
+    @followings_count = @user.followings.size
+    @followers_count = @user.followers.size
+
 
     @photo_list = @user.photos
     @album_list =@user.albums
+    @followings_list = @user.followings.map { |following| User.find(following.following_id)  }
+
+    @followers_list = @user.followers.map{ |follower| User.find(follower.follower_id) }
+
 
   end
 

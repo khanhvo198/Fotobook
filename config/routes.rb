@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   resources :photos
   resources :albums
+
+  resources :follows, only: [:index, :create, :destroy]
+
   get 'home', to: 'home#index'
 
   get 'profile', to: 'profiles#index'

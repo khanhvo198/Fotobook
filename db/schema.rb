@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_14_105611) do
+ActiveRecord::Schema.define(version: 2021_08_17_155736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,10 +30,16 @@ ActiveRecord::Schema.define(version: 2021_08_14_105611) do
     t.index ["user_id"], name: "index_albums_on_user_id"
   end
 
-  create_table "follower", force: :cascade do |t|
+  create_table "followers", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "follower_id"
+    t.index ["user_id"], name: "index_followers_on_user_id"
   end
 
-  create_table "following", force: :cascade do |t|
+  create_table "followings", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "following_id"
+    t.index ["user_id"], name: "index_followings_on_user_id"
   end
 
   create_table "photos", force: :cascade do |t|
@@ -64,5 +70,7 @@ ActiveRecord::Schema.define(version: 2021_08_14_105611) do
   end
 
   add_foreign_key "albums", "users"
+  add_foreign_key "followers", "users"
+  add_foreign_key "followings", "users"
   add_foreign_key "photos", "users"
 end

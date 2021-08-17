@@ -72,193 +72,57 @@
 
     <% elsif @mode == "followings"%>
         <div class="row profile-followings mt-5">
+        <% @followings_list.each do |following| %>
             <div class="col-md-3 followings mt-5">
                 <div class="card">
-                    <img src="../assets/photo.png" alt="" class="card-img-top rounded-circle">
+                    <%= image_tag "#{following.avatar_url}", class: "card-img-top rounded-circle", alt: "" %>
                     <div class="card-body">
-                        <h5 class="card-title text-center">Khanh Vo</h5>
+                        <h5 class="card-title text-center"><%= following.first_name + " " + following.last_name  %></h5>
                         <div class="data row">
                             <div class="data-photo col-md-6 p-0 d-flex flex-column align-items-center">
-                                <span style="font-size: 24px; color: #3C5999; font-weight: bold;">22</span> <span style="color:#3C5999">PHOTOS</span>
+                                <span style="font-size: 24px; color: #3C5999; font-weight: bold;"><%= following.photos.size%></span> <span style="color:#3C5999">PHOTOS</span>
                             </div>
                             <div class="data-albums col-md-6 p-0 d-flex flex-column align-items-center">
-                                <span style="font-size: 24px; color: #3C5999; font-weight: bold;">15</span> <span style="color:#3C5999">ALBUMS</span>
+                                <span style="font-size: 24px; color: #3C5999; font-weight: bold;"><%= following.albums.size%></span> <span style="color:#3C5999">ALBUMS</span>
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="text-center" >Follow</a>
+                    <% if current_user.followers.pluck(:follower_id).include? following.id  %>
+                        <%= link_to 'UnFollow', follow_path(id: following.id), method: :delete  %>
+                    <% else %>
+                        <%= link_to 'Follow', follows_path(follower_id: following.id), method: :post  %>
+                    <% end %>
                 </div>
-            </div>
-
-            <div class="col-md-3 followings mt-5">
-                <div class="card">
-                    <img src="../assets/photo.png" alt="" class="card-img-top rounded-circle">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Khanh Vo</h5>
-                        <div class="data row">
-                            <div class="data-photo col-md-6 p-0 d-flex flex-column align-items-center">
-                                <span style="font-size: 24px; color: #3C5999; font-weight: bold;">22</span> <span style="color:#3C5999">PHOTOS</span>
-                            </div>
-                            <div class="data-albums col-md-6 p-0 d-flex flex-column align-items-center">
-                                <span style="font-size: 24px; color: #3C5999; font-weight: bold;">15</span> <span style="color:#3C5999">ALBUMS</span>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#" class="text-center" >Follow</a>
-                </div>
-            </div>
-
-
-            <div class="col-md-3 followings mt-5">
-                <div class="card">
-                    <img src="../assets/photo.png" alt="" class="card-img-top rounded-circle">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Khanh Vo</h5>
-                        <div class="data row">
-                            <div class="data-photo col-md-6 p-0 d-flex flex-column align-items-center">
-                                <span style="font-size: 24px; color: #3C5999; font-weight: bold;">22</span> <span style="color:#3C5999">PHOTOS</span>
-                            </div>
-                            <div class="data-albums col-md-6 p-0 d-flex flex-column align-items-center">
-                                <span style="font-size: 24px; color: #3C5999; font-weight: bold;">15</span> <span style="color:#3C5999">ALBUMS</span>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#" class="text-center" >Follow</a>
-                </div>
-            </div>
-
-            <div class="col-md-3 followings mt-5">
-                <div class="card">
-                    <img src="../assets/photo.png" alt="" class="card-img-top rounded-circle">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Khanh Vo</h5>
-                        <div class="data row">
-                            <div class="data-photo col-md-6 p-0 d-flex flex-column align-items-center">
-                                <span style="font-size: 24px; color: #3C5999; font-weight: bold;">22</span> <span style="color:#3C5999">PHOTOS</span>
-                            </div>
-                            <div class="data-albums col-md-6 p-0 d-flex flex-column align-items-center">
-                                <span style="font-size: 24px; color: #3C5999; font-weight: bold;">15</span> <span style="color:#3C5999">ALBUMS</span>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#" class="text-center" >Follow</a>
-                </div>
-            </div>
-
-
-            <div class="col-md-3 followings mt-5">
-                <div class="card">
-                    <img src="../assets/photo.png" alt="" class="card-img-top rounded-circle">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Khanh Vo</h5>
-                        <div class="data row">
-                            <div class="data-photo col-md-6 p-0 d-flex flex-column align-items-center">
-                                <span style="font-size: 24px; color: #3C5999; font-weight: bold;">22</span> <span style="color:#3C5999">PHOTOS</span>
-                            </div>
-                            <div class="data-albums col-md-6 p-0 d-flex flex-column align-items-center">
-                                <span style="font-size: 24px; color: #3C5999; font-weight: bold;">15</span> <span style="color:#3C5999">ALBUMS</span>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#" class="text-center" >Follow</a>
-                </div>
-            </div>
-
-
-            <div class="col-md-3 followings mt-5">
-                <div class="card">
-                    <img src="../assets/photo.png" alt="" class="card-img-top rounded-circle">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Khanh Vo</h5>
-                        <div class="data row">
-                            <div class="data-photo col-md-6 p-0 d-flex flex-column align-items-center">
-                                <span style="font-size: 24px; color: #3C5999; font-weight: bold;">22</span> <span style="color:#3C5999">PHOTOS</span>
-                            </div>
-                            <div class="data-albums col-md-6 p-0 d-flex flex-column align-items-center">
-                                <span style="font-size: 24px; color: #3C5999; font-weight: bold;">15</span> <span style="color:#3C5999">ALBUMS</span>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#" class="text-center" >Follow</a>
-                </div>
-            </div>
-
-
-            <div class="col-md-3 followings mt-5">
-                <div class="card">
-                    <img src="../assets/photo.png" alt="" class="card-img-top rounded-circle">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Khanh Vo</h5>
-                        <div class="data row">
-                            <div class="data-photo col-md-6 p-0 d-flex flex-column align-items-center">
-                                <span style="font-size: 24px; color: #3C5999; font-weight: bold;">22</span> <span style="color:#3C5999">PHOTOS</span>
-                            </div>
-                            <div class="data-albums col-md-6 p-0 d-flex flex-column align-items-center">
-                                <span style="font-size: 24px; color: #3C5999; font-weight: bold;">15</span> <span style="color:#3C5999">ALBUMS</span>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#" class="text-center" >Follow</a>
-                </div>
-            </div>
-
+            </div
+        <% end %>
 
         </div>
+
+
+
+
     <% elsif @mode == "followers"%>
         <div class="row profile-followers mt-5">
-            <div class="col-md-3 followings mt-5">
-                <div class="card">
-                    <img src="../assets/photo.png" alt="" class="card-img-top rounded-circle">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Khanh Vo</h5>
-                        <div class="data row">
-                            <div class="data-photo col-md-6 p-0 d-flex flex-column align-items-center">
-                                <span style="font-size: 24px; color: #3C5999; font-weight: bold;">22</span> <span style="color:#3C5999">PHOTOS</span>
-                            </div>
-                            <div class="data-albums col-md-6 p-0 d-flex flex-column align-items-center">
-                                <span style="font-size: 24px; color: #3C5999; font-weight: bold;">15</span> <span style="color:#3C5999">ALBUMS</span>
+            <% @followers_list.each do |follower| %>
+                <div class="col-md-3 followings mt-5">
+                    <div class="card">
+                        <%= image_tag "#{follower.avatar_url}" , alt: "", class: "card-img-top rounded-circle" %>
+                        <div class="card-body">
+                            <h5 class="card-title text-center"><%= follower.first_name + " " + follower.last_name %></h5>
+                            <div class="data row">
+                                <div class="data-photo col-md-6 p-0 d-flex flex-column align-items-center">
+                                    <span style="font-size: 24px; color: #3C5999; font-weight: bold;"><%= follower.photos.size%></span> <span style="color:#3C5999">PHOTOS</span>
+                                </div>
+                                <div class="data-albums col-md-6 p-0 d-flex flex-column align-items-center">
+                                    <span style="font-size: 24px; color: #3C5999; font-weight: bold;"><%= follower.albums.size%></span> <span style="color:#3C5999">ALBUMS</span>
+                                </div>
                             </div>
                         </div>
+                        <%= link_to 'UnFollow', follow_path(id: follower.id), method: :delete  %>
                     </div>
-                    <a href="#" class="text-center" >Follow</a>
                 </div>
-            </div>
+            <% end %>
 
-            <div class="col-md-3 followings mt-5">
-                <div class="card">
-                    <img src="../assets/photo.png" alt="" class="card-img-top rounded-circle">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Khanh Vo</h5>
-                        <div class="data row">
-                            <div class="data-photo col-md-6 p-0 d-flex flex-column align-items-center">
-                                <span style="font-size: 24px; color: #3C5999; font-weight: bold;">22</span> <span style="color:#3C5999">PHOTOS</span>
-                            </div>
-                            <div class="data-albums col-md-6 p-0 d-flex flex-column align-items-center">
-                                <span style="font-size: 24px; color: #3C5999; font-weight: bold;">15</span> <span style="color:#3C5999">ALBUMS</span>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#" class="text-center" >Follow</a>
-                </div>
-            </div>
-
-            <div class="col-md-3 followings mt-5">
-                <div class="card">
-                    <img src="../assets/photo.png" alt="" class="card-img-top rounded-circle">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Khanh Vo</h5>
-                        <div class="data row">
-                            <div class="data-photo col-md-6 p-0 d-flex flex-column align-items-center">
-                                <span style="font-size: 24px; color: #3C5999; font-weight: bold;">22</span> <span style="color:#3C5999">PHOTOS</span>
-                            </div>
-                            <div class="data-albums col-md-6 p-0 d-flex flex-column align-items-center">
-                                <span style="font-size: 24px; color: #3C5999; font-weight: bold;">15</span> <span style="color:#3C5999">ALBUMS</span>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#" class="text-center" >Follow</a>
-                </div>
-            </div>
         </div>
     <%end%>
 </div>
