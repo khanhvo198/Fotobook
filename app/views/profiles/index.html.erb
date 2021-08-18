@@ -10,24 +10,26 @@
 
         <div class="row profile-photos">
             <% @photo_list.each do |photo| %>
-                <div class="col-md-3 photos">
-                    <div class="photo-image h-100">
-                        <%= image_tag "#{photo.photo_url}", alt: "photo" %>
+                <% if @user.followings.pluck(:following_id).include?(current_user.id) || @user.id == current_user.id || photo.privacy == "Public"%>
+                    <div class="col-md-3 photos">
+                        <div class="photo-image h-100">
+                            <%= image_tag "#{photo.photo_url}", alt: "photo" %>
 
-                        <% if photo.privacy == "Private"%>
-                            <div class="circle-lock">
-                                <i class="fas fa-lock" class="img-fluid"></i>
-                            </div>
-                        <% end %>
-                        <%= link_to "EDIT", edit_photo_path(photo.id) ,  class: "edit-photo-text" %>
-                        
+                            <% if photo.privacy == "Private"%>
+                                <div class="circle-lock">
+                                    <i class="fas fa-lock" class="img-fluid"></i>
+                                </div>
+                            <% end %>
+                            <%= link_to "EDIT", edit_photo_path(photo.id) ,  class: "edit-photo-text" %>
+                            
+                        </div>
+                        <div class="photo-title">
+                            <p class="text-center">
+                                <%= photo.title%>
+                            </p>
+                        </div>
                     </div>
-                    <div class="photo-title">
-                        <p class="text-center">
-                            <%= photo.title%>
-                        </p>
-                    </div>
-                </div>
+                <% end %>
             <% end %>
         </div>
     <% elsif @mode == "albums"%>
@@ -87,10 +89,12 @@
                             </div>
                         </div>
                     </div>
-                    <% if current_user.followers.pluck(:follower_id).include? following.id  %>
-                        <%= link_to 'UnFollow', follow_path(id: following.id), method: :delete  %>
-                    <% else %>
-                        <%= link_to 'Follow', follows_path(follower_id: following.id), method: :post  %>
+                    <% if current_user.id != following.id%>
+                        <% if current_user.followers.pluck(:follower_id).include? following.id  %>
+                            <%= link_to 'UnFollow', follow_path(id: following.id), method: :delete  %>
+                        <% else %>
+                            <%= link_to 'Follow', follows_path(follower_id: following.id), method: :post  %>
+                        <% end %>
                     <% end %>
                 </div>
             </div

@@ -52,6 +52,7 @@ main {
 
 .feeds .feed-photo {
     margin-top: 25px;
+    // min-height: 250px;s
 }
 
 
@@ -64,6 +65,7 @@ main {
 
 .feeds .card-info .card-info__avatar img {
     max-height: 30px;
+    
 }
 
 .feeds .card-info .card-info__name {
@@ -104,6 +106,7 @@ main {
 
 .feeds .wrapper-feeds-photo .photo-images {
     position: relative;
+    min-height: 200px;
 }
 
 .feeds .wrapper-feeds-photo .photo-images img {
@@ -111,6 +114,7 @@ main {
     object-fit: cover;
     width: 100%;
     height: 100%;
+
 }
 
 

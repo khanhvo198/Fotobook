@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
   get 'home', to: 'home#index'
 
+  get 'discover', to: 'home#discover', class: 'home'
+
+
   get 'profile', to: 'profiles#index'
   get 'edit_profile' , to: 'profiles#edit'
   put 'update_info', to: 'profiles#update_info'

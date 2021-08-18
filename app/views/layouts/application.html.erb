@@ -18,10 +18,10 @@
       <div class="sidebar col-md-2">
           <ul class="nav flex-column mt-5 ml-5">
               <li class="nav-item">
-                  <a class="nav-link active" href="#">Feeds</a>
+                  <%= link_to 'Feeds', root_path, class: "nav-link #{@active_sidebar == 'feeds' ? 'active' : ''}" %>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="#">Discover</a>
+                  <%= link_to 'Discover', discover_path , class: "nav-link #{@active_sidebar == 'discover' ? 'active' : ''}" %>
               </li>
           </ul>
       </div>
