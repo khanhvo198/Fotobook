@@ -56,9 +56,8 @@
                                 </div>
                             <% end %>
 
-                            <div class="edit-photo-text">
-                                EDIT
-                            </div>
+                            <%= link_to "EDIT", edit_album_path(album.id) ,  class: "edit-photo-text" %>
+
                             <div class="count-photo">
                                 <span><%= album.photos_url.size %></span>
                                 <span>PHOTOS</span>
@@ -148,5 +147,7 @@
 
     })
 </script>
+
+<%= javascript_pack_tag  'album' %>
 
 

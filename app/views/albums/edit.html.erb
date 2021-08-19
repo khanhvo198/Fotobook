@@ -1,0 +1,158 @@
+<div class="edit-album col-md-8">
+    <div class="row">
+        <h5 class="mt-4">New Album</h5>
+        <hr class="w-100">
+    </div>
+    <div class="form-edit-album">
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-6 d-flex flex-column justify-content-between">
+                    <div>
+                        <label for="">Title</label>
+                        <input type="text" class="form-control" name="title" id="title" value="<%= @album.title %>">
+                    </div>
+                    <div class="w-50">
+                        <label for="">Sharing mode</label>
+                        <select name="privacy" id="privacy" class="form-control">
+                            <option value='Public' <%= @album.privacy == "Public" ? 'selected' : '' %>>Public</option>
+                            <option value='Private' <%= @album.privacy == "Private" ? 'selected' : '' %>>Private</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Description</label>
+                    <textarea name="description" id="description" cols="30" rows="10" class="form-control"><%= @album.description %></textarea>
+
+                </div>
+            </div>
+            <div class="preview-photo-upload form-row">
+                <div class="col-md-2 mt-3">
+                    <div class="photo-upload-border d-flex justify-content-center align-items-center">
+                        <i class="fas fa-plus"></i>
+                        <input type="file" multiple name="photo_url" class="photo-upload" id="photo_url">
+                    </div>
+                </div>
+
+
+
+            <% @album.photos_url.each do |photo| %>
+                <div class="col-md-2 mt-3">
+                   <div class="position-relative">
+                        <a class='position-absolute' style="top: 0; right: 0; color: white; z-index:100; cursor: pointer" id="btn-delete-photo" data-file='<%= photo %>'><i class="fas fa-window-close"></i></a>
+                        <img width='180' height='180' src='<%= photo %>' class='position-absolute' >
+                    </div>
+                </div>
+            <% end %>
+
+            </div>
+
+
+              
+
+
+            <div>
+                <button class="btn btn-success mt-5" id="submit-album">Save</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+<script>
+$(function() {
+
+    let imageUploadInEditAlbum = []
+
+    let imageRemoved = []
+
+    $('.edit-album img').each(function() {
+        imageUploadInEditAlbum.push($(this).attr('src'))
+        // imageRemoved.push($(this).attr('src'))
+    })
+
+
+
+
+    $('.edit-album #photo_url').on('change', function() {
+        inputFiles = this
+        for(const file of inputFiles.files) {
+            imageUploadInEditAlbum.push(file)
+        }
+
+        previewPhoto(this)
+
+    })
+
+    $('.edit-album').on('click', '#btn-delete-photo', function() {
+        indexRemoveInUpload = imageUploadInEditAlbum.indexOf($(this).attr('data-file'))
+        imageUploadInEditAlbum.splice(indexRemoveInUpload,1)
+        $(this).parent().parent().remove()
+    })
+
+    function previewPhoto(input) {
+        if (input.files && input.files.length) {
+            for(const file of input.files) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const divForImage = `
+                        <div class="col-md-2 mt-3">
+                            <div class="position-relative">
+                                <a class='position-absolute' style="top: 0; right: 0; color: white; z-index:100; cursor: pointer" id="btn-delete-photo" data-file='${file}'><i class="fas fa-window-close"></i></a>
+                                <img width='180' height='180' src='${e.target.result}' class='position-absolute' >
+                            </div>
+                        </div>
+                        `
+                    $('.edit-album .form-edit-album .preview-photo-upload').append(divForImage)
+                };
+    
+                reader.readAsDataURL(file);
+            }
+            $('.edit-album .form-edit-album .preview-photo-upload').height($('.preview-photo-upload').height())
+            input.value = null
+        }
+    }
+
+    $('#submit-album').on('click', function(e) {
+        e.preventDefault()
+        let formData = new FormData()
+
+
+
+        imageUploadInEditAlbum.forEach(file => {
+            if(typeof(file) == 'string') formData.append('remains_file[]', file)
+            else formData.append('photos_url[]', file, (new Date()).getTime() + Math.round(Math.random()*10000) + file.name)
+        })
+
+        let title = $('#title').val()
+        let privacy = $('#privacy').val()
+        let description = $('#description').val()
+        // console.log(privacy)
+        // console.log(description)
+        formData.append('title', title)
+        formData.append('privacy',privacy)
+        formData.append('description', description)
+
+
+        $.ajax({
+            url: '/albums/' + <%= @album.id%>,
+            method: 'put',
+            data: formData,
+            success: function(data) {
+                console.log(data)
+            },
+            cache: false,
+            processData: false,
+            contentType: false,
+        })
+    })
+
+})
+ 
+
+
+</script>
