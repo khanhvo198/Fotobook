@@ -47,12 +47,13 @@
             </div>
 
 
-              
-
-
             <div>
                 <button class="btn btn-success mt-5" id="submit-album">Save</button>
+                <%= link_to "Delete" , album_path(@album.id), method: :delete, class: "btn btn-danger mt-5"%>
+
             </div>
+            
+
 
         </form>
     </div>
